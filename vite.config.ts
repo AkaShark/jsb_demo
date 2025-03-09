@@ -6,6 +6,7 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: '/',  // 确保这里的配置正确
   plugins: [
     vue(),
     vueDevTools(),

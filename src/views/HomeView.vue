@@ -15,6 +15,7 @@ const wopay = (window.WoPay as unknown) as WoPayMethod;
 const resultMessage = ref('');
 const isError = ref(false);
 const isLoading = ref(false);
+const params = ref('');
 
 // 组件挂载时输出日志
 onMounted(() => {
@@ -104,7 +105,7 @@ const buttons = [
         isError.value = false;
         resultMessage.value = '正在打开相机...';
         console.log('开始打开相机...');
-        const result = await wopay.openMarkCamera();
+        const result = await wopay.openMarkCamera(params.value ? params.value : {});
         console.log('相机操作结果：', result);
         resultMessage.value = `操作成功：${JSON.stringify(result)}`;
       } catch (error) {
@@ -138,6 +139,18 @@ const buttons = [
             <span class="text-xl">{{ button.icon }}</span>
             <span class="font-medium text-gray-900">{{ button.label }}</span>
           </button>
+        </div>
+
+        <div class="mb-4">
+          <label for="params" class="block text-sm font-medium text-gray-700 mb-1">参数值</label>
+          <input 
+            class="text-black"
+            type="text" 
+            id="params"
+            v-model="params" 
+            placeholder="请输入参数" 
+          >
+          <p class="mt-1 text-xs text-gray-500">输入的参数将在点击水印相机时传递给JSB</p>
         </div>
 
         <!-- 结果显示区域 -->

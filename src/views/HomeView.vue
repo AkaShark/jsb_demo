@@ -105,7 +105,7 @@ const buttons = [
         isError.value = false;
         resultMessage.value = '正在打开相机...';
         console.log('开始打开相机...');
-        const result = await wopay.openMarkCamera(params.value ? params.value : {});
+        const result = await wopay.openMarkCamera(JSON.parse(params.value) ? JSON.parse(params.value) : {});
         console.log('相机操作结果：', result);
         resultMessage.value = `操作成功：${JSON.stringify(result)}`;
       } catch (error) {

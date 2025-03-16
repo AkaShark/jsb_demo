@@ -105,7 +105,7 @@ const buttons = [
         isError.value = false;
         resultMessage.value = '正在打开相机...';
         console.log('开始打开相机...');
-        const result = await wopay.openMarkCamera(JSON.parse(params.value) ? JSON.parse(params.value) : {});
+        const result = await wopay.openMarkCamera(JSON.parse(params.value) ? JSON.parse(params.value) : JSON.parse('{"bizCode": "demo", "businessParams": "237dc147f6b7179cc0c53f34444d8bd7b72f3d409f23cb34439ee7fefc489f96d5a2dccadba7f10f094d997b936fb796b5c177ffb17677bbb9dbdbad96b4278520ff6b6c8ed9322e8a8dbef95e024300647f3e55de3e912246c936aeccebe46772e4e05f094ccdc44ad6c460b2290959ec81f4eec4db26bb06513e1c000fb78fe4b40168511844a959554e2db51edd8a13dd876e8af7ad58332c354400994ff038d39642b395c090e881b53ee99798e1902c8ebc9a7df61b6001b45c7d6934e265811d4cb86216fe9a2399f76a16aef70533489242d4f3ffd3379649199311777710cad66a4fc2e638c34024cca8e3007642fdc0e6627cdc9f297fc63de99bd9c1c3505e2fbd1a29bdd93f3bee6e977579c52b1cd3d9e99b6445a103da3a4388dc5c7a6d06f6ec95a501e3c357d09a72a3b594c36190764a3d4c3e12c445f64696e6c5d682a42e6909e8a46224c5fd51"}'));
         console.log('相机操作结果：', result);
         resultMessage.value = `操作成功：${JSON.stringify(result)}`;
       } catch (error) {
